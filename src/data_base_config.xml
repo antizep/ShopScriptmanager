@@ -19,13 +19,13 @@
           p:packagesToScan="entities"
           p:dataSource-ref="dataSource"
     >
-        <property name="annotatedClasses">
-            <list>
-                <value>spring.entity.EntityAuntification</value>
-                <value>spring.entity.EntityParameters</value>
-                <value>spring.entity.EntityUserParameter</value>
-            </list>
-        </property>
+        <!--<property name="annotatedClasses">-->
+            <!--<list>-->
+                <!--<value>spring.entity.EntityAuntification</value>-->
+                <!--<value>spring.entity.EntityParameters</value>-->
+                <!--<value>spring.entity.EntityUserParameter</value>-->
+            <!--</list>-->
+        <!--</property>-->
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</prop>
@@ -45,8 +45,8 @@
     <context:property-placeholder
             location="properties/jdbc.properties"
     />
-    <bean id="auntification" class="spring.dao.HibAuntifDao"
-          p:sessionFactory-ref="sessionFactory"/>
+    <!--<bean id="auntification" class="spring.dao.HibAuntifDao"-->
+          <!--p:sessionFactory-ref="sessionFactory"/>-->
 
 
 </beans>
