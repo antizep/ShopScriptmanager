@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:utill="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+          p:driverClassName="${jdbc.driverClassName}"
+          p:url="${jdbc.url}"
+          p:username="${jdbc.username}"
+          p:password="${jdbc.password}"
+    />
+
+
+    <bean class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
+          id="sessionFactory"
+          p:packagesToScan="entities"
+          p:dataSource-ref="dataSource"
+    >
+        <property name="annotatedClasses">
+            <list>
+                <value>spring.entity.EntityAuntification</value>
+                <value>spring.entity.EntityParameters</value>
+                <value>spring.entity.EntityUserParameter</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</prop>
+                <prop key="hibernate.connection.driver_class">org.postgresql.Driver</prop>
+            </props>
+        </property>
+    </bean>
+
+    <utill:properties id="hibernateProperty">
+        <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</prop>
+        <prop key="hibernate.max_fetch_depth">3</prop>
+        <prop key="hibernate.jdbc_fetch_size">50</prop>
+        <prop key="hibernate.jdbc_batch_size">10</prop>
+        <prop key="hibernate.show_sql">true</prop>
+    </utill:properties>
+
+    <context:property-placeholder
+            location="properties/jdbc.properties"
+    />
+    <bean id="auntification" class="spring.dao.HibAuntifDao"
+          p:sessionFactory-ref="sessionFactory"/>
+
+
+</beans>
