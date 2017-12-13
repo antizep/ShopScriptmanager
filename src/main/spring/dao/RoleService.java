@@ -6,13 +6,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import spring.entity.RolesEntity;
 import spring.interfaces.RoleDao;
-import spring.interfaces.RoleRepository;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import spring.repositories.RoleRepository;
 
 
-@Service("jpaAuntificationService")
+@Service("jpaAuntificationRoleService")
 @Repository
 @Transactional
 public class RoleService implements RoleDao {
