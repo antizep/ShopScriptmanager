@@ -28,7 +28,6 @@ public class Auth extends HttpServlet {
         WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
         AuthenticationDao service = ctx.getBean("jpaAuthenticationService", AuthenticationDao.class);
-
         authenticationEntity = service.auntification(authenticationEntity);
 
         response.getWriter().print(authenticationEntity.getId());
