@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+    <script src="../js/bootstrap.min.js"></script>
+
+    <title>FackedNews</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+
+
+</head>
+
+<body>
+    <div class="heed">
+        <nav class="navbar navbar-inverse" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="">
+                        </div>
+                        <button type="submit" class="btn btn-default">найти</button>
+                    </form>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">авторизация <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Авторизация</a></li>
+                            <li class="divider"></li>
+                            <li>
+                                <form action="#" method="get">
+                                    mail:<br>
+                                    <input type="text"><br>
+                                    пароль:<br>
+                                    <input type="password" title="">
+                                    <button type="submit" class="btn btn-default">войти</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">регистрация <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Регистрация</a></li>
+                        <li class="divider"></li>
+                        <form action="#" method="get">
+                            mail:<br>
+                            <input type="text"><br>
+                            пароль:<br>
+                            <input type="password">
+                            повторите пароль:<br>
+                            <input type="password">
+                            <button type="submit" class="btn btn-default">войти</button>
+                        </form>
+                    </ul>
+                </li>
+                    <li>
+                        <p class="navbar-text">18+</p>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
+        <div class="col-md-12">
+            <img src="../images/logo.svg" alt="Нахрен Новости">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 menu">
+            <div class="row text-center">
+                <table class="calendar">
+                    <thead>
+                        <tr>
+                            <td>Пн</td>
+                            <td>Вт</td>
+                            <td>Ср</td>
+                            <td>Чт</td>
+                            <td>Пн</td>
+                            <td>Сб</td>
+                            <td>Вс</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>6</td>
+                            <td>7</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-8 news">
+
+        </div>
+        <div class="col-md-2 promo">
+            реклама
+        </div>
+    </div>
+
+
+    <div class="modal fade " id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content ahtung"style="background-color: #0f0f0f">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="myModalLabel">Внимание</h2>
+                </div>
+                <div class="modal-body">
+                    Нахрен-новости - это журнал для любителей политики в стороне от политики.
+                    Все события происходят в парраллельной реальности, и не имеют никакого отношения к нашей с вами вселенной.
+                    Альтернативная реальность более жестока чем наша поэтому во избежание травмирования вашей психики вообще настоятельно советуем поскорее покинуть наш ресурс и категорически запрещаем посещять лицам младше 18 лет.
+                    Если вы столь уверены в себе, как Чак Ноорис то настоятельно рекомендуем подкладывать под пятую точку асбестовые пластины во избежание пожароопасных ситуаций.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">я все же рискну</button>
+                    <button type="button" class="btn btn-primary">покинуть</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var alertModal= function modal() {
+        $('#myModal').modal();
+    }();
+</script>
+</html>

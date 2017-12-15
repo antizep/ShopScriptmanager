@@ -1,7 +1,10 @@
 package servlets;
 
+import models.Authentification;
+import org.json.JSONObject;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+import services.GenerateToken;
 import spring.entity.AuthenticationEntity;
 import spring.interfaces.AuthenticationDao;
 import spring.interfaces.RoleDao;
@@ -19,6 +22,11 @@ public class Auth extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
+        response.setContentType("application/json");
+
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         AuthenticationEntity authenticationEntity = new AuthenticationEntity();
@@ -28,10 +36,27 @@ public class Auth extends HttpServlet {
         WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
         AuthenticationDao service = ctx.getBean("jpaAuthenticationService", AuthenticationDao.class);
+
         authenticationEntity = service.auntification(authenticationEntity);
 
-        response.getWriter().print(authenticationEntity.getId());
+        if(authenticationEntity != null) {
 
+            Authentification authentification = new Authentification();
+
+            authentification.setLogin(authenticationEntity.getLogin());
+            authentification.setUserId(authenticationEntity.getId());
+            authentification.setToken(GenerateToken.generateToken(authentification));
+
+            JSONObject auth =new JSONObject();
+
+            auth.put("id",authentification.getUserId());
+            auth.put("token",authentification.getToken());
+
+            response.getWriter().print(auth);
+
+        }else{
+            response.getWriter().print(new JSONObject().put("error","no user"));
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

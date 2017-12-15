@@ -1,0 +1,21 @@
+.menu{
+
+}
+.promo{
+    background-color: #aaaaaa;
+}
+.ahtung{
+    font-size: large;
+    color: #b92c28;
+}
+td,th {text-align:center;}
+.calendar{
+    margin-left: 20px;
+    border-collapse: separate;
+    border-spacing: 4px;
+}
+.calendar th,td{
+    background-color: #aaaaaa;
+
+    border: 2px solid #c12e2a;
+}
