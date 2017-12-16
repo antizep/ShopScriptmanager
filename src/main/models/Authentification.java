@@ -29,4 +29,14 @@ public class Authentification {
     public void setToken(String token) {
         this.token = token;
     }
+
+    @Override
+    public boolean equals(Object authentification){
+
+        if (authentification == null || getClass() != authentification.getClass()) return false;
+
+        Authentification a = (Authentification) authentification;
+
+        return a.getUserId() == this.getUserId() && a.getToken().equals(getToken());
+    }
 }

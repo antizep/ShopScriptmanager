@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import services.GenerateToken;
+import services.SessionService;
 import spring.entity.AuthenticationEntity;
 import spring.interfaces.AuthenticationDao;
 import spring.interfaces.RoleDao;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name = "Auth",
-urlPatterns = "auth")
+urlPatterns = "/auth")
 public class Auth extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,6 +34,7 @@ public class Auth extends HttpServlet {
 
         authenticationEntity.setLogin(login);
         authenticationEntity.setPassword(password);
+
         WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
         AuthenticationDao service = ctx.getBean("jpaAuthenticationService", AuthenticationDao.class);
@@ -51,6 +53,8 @@ public class Auth extends HttpServlet {
 
             auth.put("id",authentification.getUserId());
             auth.put("token",authentification.getToken());
+
+            SessionService.addAuthentication(authentification);
 
             response.getWriter().print(auth);
 

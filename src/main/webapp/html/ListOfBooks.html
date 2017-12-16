@@ -11,14 +11,13 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-
+    <script src="../js/Authentification.js"></script>
 
 </head>
 
 <body>
     <div class="heed">
         <nav class="navbar navbar-inverse" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -37,24 +36,25 @@
                         </div>
                         <button type="submit" class="btn btn-default">найти</button>
                     </form>
-
-                    <li class="dropdown">
+                    <li class="dropdown" id="auth">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">авторизация <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Авторизация</a></li>
                             <li class="divider"></li>
                             <li>
-                                <form action="#" method="get">
+                                <form id="authentication" action="javascript:void(null);" onsubmit="authentification()" method="Post">
                                     mail:<br>
-                                    <input type="text"><br>
+                                    <input type="text" name="login"><br>
                                     пароль:<br>
-                                    <input type="password" title="">
+                                    <input type="password" name="password">
+
                                     <button type="submit" class="btn btn-default">войти</button>
+
                                 </form>
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown" id="registration">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">регистрация <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Регистрация</a></li>
@@ -70,19 +70,29 @@
                         </form>
                     </ul>
                 </li>
+                    <li class="dropdown" id="lk" style="display: none">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Личный кабинет <b class="caret"></b> </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"> Админка </a></li>
+                            <li><a href="#" onclick="exit()"> Выход </a></li>
+                        </ul>
+                    </li>
                     <li>
-                        <p class="navbar-text">18+</p>
+                        <p class="navbar-text">16+</p>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
 
         <div class="col-md-12">
-            <img src="../images/logo.svg" alt="Нахрен Новости">
+            <img src="../images/logo.jpg" alt="ARCHIE">
+            <h2>Интеренет магазин ARCHIE</h2>
         </div>
+
     </div>
 
     <div class="row">
+        <!--
         <div class="col-md-2 menu">
             <div class="row text-center">
                 <table class="calendar">
@@ -137,13 +147,13 @@
                     </tbody>
                 </table>
             </div>
-        </div>
+        </div>-->
         <div class="col-md-8 news">
 
         </div>
-        <div class="col-md-2 promo">
+        <!--<div class="col-md-2 promo">
             реклама
-        </div>
+        </div>-->
     </div>
 
 
@@ -168,8 +178,9 @@
     </div>
 </body>
 <script>
-    var alertModal= function modal() {
-        $('#myModal').modal();
-    }();
+
+        // var alertModal= function modal() {
+        //     $('#myModal').modal();
+        // }();
 </script>
 </html>
