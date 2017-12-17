@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
     <script src="../js/Authentification.js"></script>
-
+    <script src="../js/adminPanel.js"></script>
 </head>
 
 <body>
@@ -73,7 +73,7 @@
                     <li class="dropdown" id="lk" style="display: none">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Личный кабинет <b class="caret"></b> </a>
                         <ul class="dropdown-menu">
-                            <li><a href="#"> Админка </a></li>
+                            <li><a href="#" onclick="adminLoad()" id="admin" style="display: none"> Админка </a></li>
                             <li><a href="#" onclick="exit()"> Выход </a></li>
                         </ul>
                     </li>
@@ -92,68 +92,21 @@
     </div>
 
     <div class="row">
-        <!--
         <div class="col-md-2 menu">
-            <div class="row text-center">
-                <table class="calendar">
-                    <thead>
-                        <tr>
-                            <td>Пн</td>
-                            <td>Вт</td>
-                            <td>Ср</td>
-                            <td>Чт</td>
-                            <td>Пн</td>
-                            <td>Сб</td>
-                            <td>Вс</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                            <td>6</td>
-                            <td>7</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="row text-center" id="content_table">
+
+                <div class="content">
+
+                </div>
+
             </div>
-        </div>-->
-        <div class="col-md-8 news">
+        </div>
+        <div class="col-md-8 news" id="body_table">
 
         </div>
-        <!--<div class="col-md-2 promo">
-            реклама
-        </div>-->
+        <div class="col-md-2 promo">
+            Обновления:
+        </div>
     </div>
 
 

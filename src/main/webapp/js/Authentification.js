@@ -1,17 +1,18 @@
-
-
-
 window.onload = function(){
     var token;
     var id;
+    var role;
     token = localStorage.getItem("token");
     id = localStorage.getItem("id");
-
+    role =localStorage.getItem("role");
     console.log(id+":"+token);
     if(id && token){
         $("#auth").css("display","none");
         $("#registration").css("display","none");
         $("#lk").css("display","block");
+        if(role == 1){
+            $("#admin").css("display","block");
+        }
     }
 
 };
@@ -30,6 +31,7 @@ var  authentification = function () {
             response=data;
             localStorage.setItem("token",response.token);
             localStorage.setItem("id",response.id);
+            localStorage.setItem("role",response.role);
             location.reload();
         },
         error:  function(xhr, str){
@@ -42,6 +44,7 @@ var exit = function (){
 
     var token = localStorage.getItem("token");
     var id = localStorage.getItem("id");
+
     $.ajax({
         type: 'POST',
         url: '/shop/exit',
@@ -51,7 +54,7 @@ var exit = function (){
         },
         success: function(data) {
 
-            var response=data;
+            //var response=data;
             localStorage.removeItem("token");
             localStorage.removeItem("id");
             location.reload();
@@ -59,4 +62,5 @@ var exit = function (){
         error:  function(xhr, str){
             alert('Возникла ошибка: ' + xhr.responseCode);
         }
-    })};
+    })
+};

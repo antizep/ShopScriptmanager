@@ -1,0 +1,70 @@
+<form action="#" method="POST">
+    <H2>Новый товар</H2>>
+
+    <div class="content">
+    <div class="row">
+        <span id="outputMulti"></span>
+    </div>
+    </div>
+
+    <div class="row">
+        <label>Мультизагрузка изображений:</label>
+        <input type="file" id="fileMulti" name="fileMulti[]" multiple />
+    </div>
+
+
+    <fieldset class="form-group">
+        <label for="exampleTextarea">название товара</label>
+        <input type="text" class="form-control" id="exampleInputEmail1">
+        <small class="text-muted"></small>
+    </fieldset>
+
+        <label class="exampleTextarea">Цены:</label>
+    <div class="form-group form-inline">
+        <div class="input-group">
+            <div class="input-group-addon">&#8381;</div>
+            <input type="text" class="form-control" id="purchase" placeholder="закупочная цена">
+            <div class="input-group-addon">.00</div>
+        </div>
+        <div class="input-group">
+            <div class="input-group-addon">&#8381;</div>
+            <input type="text" class="form-control" id="selling" placeholder="отпускная цена">
+            <div class="input-group-addon">.00</div>
+        </div>
+    </div>
+
+    <fieldset class="form-group">
+        <label for="exampleTextarea">Описание</label>
+        <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </fieldset>
+
+    <button type="submit" class="btn btn-danger-outline">Submit</button>
+</form>
+
+<script>
+    function handleFileSelectMulti(evt) {
+        var files = evt.target.files; // FileList object
+        document.getElementById('outputMulti').innerHTML = "";
+        for (var i = 0, f; f = files[i]; i++) {
+
+            if (!f.type.match('image.*')) {
+                alert("Только изображения....");
+            }
+
+            var reader = new FileReader();
+            reader.onload = (function(theFile) {
+                return function(e) {
+                    // Render thumbnail.
+                    var span = document.createElement('span');
+                    span.innerHTML = ['<img class="img-thumbnail col-md-3" src="', e.target.result,
+                        '" title="', escape(theFile.name), '"/>'].join('');
+                    document.getElementById('outputMulti').insertBefore(span, null);
+                };
+            })(f);
+
+            // Read in the image file as a data URL.
+            reader.readAsDataURL(f);
+        }
+    }
+    document.getElementById('fileMulti').addEventListener('change', handleFileSelectMulti, false);
+</script>

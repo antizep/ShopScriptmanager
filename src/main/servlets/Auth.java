@@ -53,7 +53,7 @@ public class Auth extends HttpServlet {
 
             auth.put("id",authentification.getUserId());
             auth.put("token",authentification.getToken());
-
+            auth.put("role",authenticationEntity.getRole().getIdRole());
             SessionService.addAuthentication(authentification);
 
             response.getWriter().print(auth);
