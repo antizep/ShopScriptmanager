@@ -18,7 +18,7 @@ public class SessionService {
         authentifications.remove(auth);
     }
 
-    public boolean hasAuth(Authentification auth){
+    public static boolean hasAuth(Authentification auth){
         return authentifications.contains(auth);
     }
 

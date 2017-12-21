@@ -10,6 +10,7 @@ public class EntityProvider implements Serializable {
     private String name;
     private String url;
     private String remark;
+    private Long minPay;
 
     @Id
     @Column(name = "id")
@@ -72,5 +73,15 @@ public class EntityProvider implements Serializable {
         result = 31 * result + (url != null ? url.hashCode() : 0);
         result = 31 * result + (remark != null ? remark.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "min_pay")
+    public Long getMinPay() {
+        return minPay;
+    }
+
+    public void setMinPay(Long minPay) {
+        this.minPay = minPay;
     }
 }

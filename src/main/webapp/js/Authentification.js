@@ -1,7 +1,9 @@
+var token;
+var id;
+var role;
+
 window.onload = function(){
-    var token;
-    var id;
-    var role;
+
     token = localStorage.getItem("token");
     id = localStorage.getItem("id");
     role =localStorage.getItem("role");

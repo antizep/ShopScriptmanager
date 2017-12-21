@@ -27,11 +27,11 @@ public class AddProduct extends HttpServlet {
 
         response.setContentType("application/json");
 
-
         String nameProduct = request.getParameter("name_product");
         String purchase = request.getParameter("purchase");
         String selling = request.getParameter("selling");
         String description = request.getParameter("description");
+
 
         System.out.println(nameProduct+purchase+selling+description);
         List<Part> fileParts = request.getParts().stream().filter(part -> "images".equals(part.getName())).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">

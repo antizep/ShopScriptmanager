@@ -1,0 +1,40 @@
+<script src="../js/adminPanel.js"></script>
+<form action="javascript:void(null);" onsubmit="addProvider();" id="addProviderForm" method="POST" enctype="multipart/form-data">
+    <H2>Добавим поставщика</H2>>
+
+    <div class="content">
+        <div class="row">
+            <span id="outputMulti"></span>
+        </div>
+    </div>
+
+    <input type="hidden" id="id" name="id" value="">
+    <input type="hidden" id="token" name="token" value="">
+
+    <fieldset class="form-group">
+        <label for="name">Поставщик</label>
+        <input type="text" class="form-control" name="name" id="name">
+        <small class="text-muted"></small>
+    </fieldset>
+
+    <div class="input-group">
+        <div class="input-group-addon">&#8381;</div>
+        <input type="text" class="form-control" id="minimum" name="minimum" placeholder="минимальный заказ">
+        <div class="input-group-addon">.00</div>
+    </div>
+
+    <label for="name">WEB</label>
+    <div class="input-group">
+        <div class="input-group-addon">http://</div>
+        <input type="text" class="form-control" id="url" name="URL" placeholder="mySite.com">
+    </div>
+
+
+    <fieldset class="form-group">
+        <label for="name">Заметки:</label>
+        <textarea class="form-control" id="remark" name="remark" rows="3"></textarea>
+    </fieldset>
+
+    <button type="submit" class="btn btn-danger-outline">Сохранить</button>
+
+</form>
