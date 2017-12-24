@@ -21,6 +21,6 @@ public class AuthenticationImpl implements AuthenticationDao {
     public AuthenticationEntity auntification(AuthenticationEntity authenticationEntity) {
 
         return repository.findAuthenticationEntityByLoginAndPassword(authenticationEntity.getLogin(),authenticationEntity.getPassword());
-//return null;
+
     }
 }

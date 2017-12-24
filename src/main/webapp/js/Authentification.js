@@ -26,7 +26,7 @@ var  authentification = function () {
     var msg   = auth.serialize();
     $.ajax({
         type: 'POST',
-        url: '/shop/auth',
+        url: '/auth',
         data: msg,
         success: function(data) {
 
@@ -42,14 +42,14 @@ var  authentification = function () {
     });
 };
 
-var exit = function (){
+var logout = function (){
 
     var token = localStorage.getItem("token");
     var id = localStorage.getItem("id");
 
     $.ajax({
         type: 'POST',
-        url: '/shop/exit',
+        url: '/exit',
         data: {
             id: id,
             token:token

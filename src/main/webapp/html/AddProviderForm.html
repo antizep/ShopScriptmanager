@@ -1,4 +1,9 @@
-<script src="../js/adminPanel.js"></script>
+
+        <button type="submit" class="btn btn-danger-outline col-md-6 btn_selected" aria-pressed="true">Новый поставщик</button>
+        <button type="submit" class="btn btn-danger-outline col-md-6" onclick="loadContent('./html/AllProvider.html')" aria-pressed="true">Все поставщики</button>
+
+
+
 <form action="javascript:void(null);" onsubmit="addProvider();" id="addProviderForm" method="POST" enctype="multipart/form-data">
     <H2>Добавим поставщика</H2>>
 
@@ -26,7 +31,7 @@
     <label for="name">WEB</label>
     <div class="input-group">
         <div class="input-group-addon">http://</div>
-        <input type="text" class="form-control" id="url" name="URL" placeholder="mySite.com">
+        <input type="url" class="form-control" id="url" name="URL" placeholder="mySite.com">
     </div>
 
 

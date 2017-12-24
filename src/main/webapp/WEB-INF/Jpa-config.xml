@@ -20,9 +20,9 @@
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource"
           p:driverClassName="org.postgresql.Driver"
-          p:url="jdbc:postgresql://localhost:5432/postgres"
+          p:url="jdbc:postgresql://194.58.119.151:5432/postgres"
           p:username="postgres"
-          p:password="1414"
+          p:password="j7h12Q22"
     />
     <context:property-placeholder
             location="classpath:*/jdbc.properties"/>

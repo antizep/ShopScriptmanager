@@ -14,8 +14,7 @@ td,th {text-align:center;}
     border-collapse: separate;
     border-spacing: 4px;
 }
-.calendar th,td{
-    background-color: #aaaaaa;
 
-    border: 2px solid #c12e2a;
+.btn_selected{
+    border: 1px #000000 solid
 }

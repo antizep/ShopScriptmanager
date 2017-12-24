@@ -8,7 +8,7 @@
     </div>
 
     <div class="row">
-        <label>Мультизагрузка изображений:</label>
+        <label>Картинки изображений:</label>
         <input type="file" id="fileMulti" name="images" multiple />
     </div>
 
@@ -17,6 +17,12 @@
         <label for="exampleInputEmail1">название товара</label>
         <input type="text" class="form-control" name="name_product" id="exampleInputEmail1">
         <small class="text-muted"></small>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="providers">Возможные поставщики</label>
+        <select multiple name="provider[]" class="form-control" size="3" id="providers">
+
+        </select>
     </fieldset>
 
         <label class="exampleTextarea">Цены:</label>
@@ -42,6 +48,9 @@
 </form>
 
 <script>
+
+    addProviderFormProduct();
+
     function handleFileSelectMulti(evt) {
         var files = evt.target.files; // FileList object
         document.getElementById('outputMulti').innerHTML = "";
