@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class EntityPrice implements Serializable{
     private EntityProvider providerByProvider;
     private EntityProduct productByProduct;
-
+    private long id;
     @ManyToOne
     @JoinColumn(name = "provider", referencedColumnName = "id", nullable = false)
     public EntityProvider getProviderByProvider() {
@@ -18,7 +18,7 @@ public class EntityPrice implements Serializable{
     public void setProviderByProvider(EntityProvider providerByProvider) {
         this.providerByProvider = providerByProvider;
     }
-@Id
+
     @ManyToOne
     @JoinColumn(name = "product", referencedColumnName = "id", nullable = false)
     public EntityProduct getProductByProduct() {
@@ -27,5 +27,15 @@ public class EntityPrice implements Serializable{
 
     public void setProductByProduct(EntityProduct productByProduct) {
         this.productByProduct = productByProduct;
+    }
+    @Id
+    @Column(name ="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
