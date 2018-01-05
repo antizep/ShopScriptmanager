@@ -49,6 +49,8 @@ public class Auth extends HttpServlet {
             authentification.setUserId(authenticationEntity.getId());
             authentification.setToken(GenerateToken.generateToken(authentification));
 
+            authentification.setRole(authenticationEntity.getRole().getIdRole());
+
             JSONObject auth =new JSONObject();
 
             auth.put("id",authentification.getUserId());

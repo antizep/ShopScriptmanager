@@ -71,7 +71,7 @@ var generateTableAllProviderTable = function () {
 var selectProvider = function () {
     var rsp;
     $.ajax({
-        url: "/select.orders",
+        url: "/SelectProviders",
         async:false,
 
 
@@ -91,6 +91,18 @@ var selectProvider = function () {
         dataType: "json"
     });
     return rsp.providers;
+};
+
+var resizeCardProduct = function(){
+    $('.container').each(function(){
+        var highestBox = 0;
+        $('.col-md-3 ', this).each(function(){
+            if($(this).height() > highestBox) {
+                highestBox = $(this).height();
+            }
+        });
+        $('.col-md-3 ',this).height(highestBox);
+    });
 };
 
 

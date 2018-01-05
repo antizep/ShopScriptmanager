@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(name = "SelectProviders",
-urlPatterns = "/select.orders")
+urlPatterns = "/SelectProviders")
 public class SelectProviders extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
@@ -38,19 +38,23 @@ public class SelectProviders extends HttpServlet {
         authentification.setUserId(Long.parseLong(idS));
         authentification.setToken(token);
 
-        if(SessionService.hasAuth(authentification)){
+        if(SessionService.hasAuth(authentification)) {
+            if (authentification.getRole() == SessionService.ROLE_ADMIN) {
+                ProviderDao repository = ctx.getBean("jpaProviderService", ProviderDao.class);
 
-            ProviderDao repository = ctx.getBean("jpaProviderService",ProviderDao.class);
-
-            List<EntityProvider> providers = repository.selectAll();
-            JSONArray providersJ= new JSONArray(providers);
+                List<EntityProvider> providers = repository.selectAll();
+                JSONArray providersJ = new JSONArray(providers);
 //            for(EntityProvider provider : providers){
 //                rspJ.put("provider",provider);
 //            }
-            rspJ.put("providers",providersJ);
-            rspJ.put("authentication",true);
-        }else {
-            rspJ.put("authentication",false);
+                rspJ.put("providers", providersJ);
+                rspJ.put("authentication", true);
+            }else{
+                rspJ.put("authentication", false);
+                rspJ.put("error","у вас нет прав для просмотра контента");
+            }
+        } else {
+            rspJ.put("authentication", false);
         }
         response.getWriter().print(rspJ);
     }

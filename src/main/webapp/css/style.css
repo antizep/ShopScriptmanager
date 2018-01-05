@@ -18,3 +18,13 @@ td,th {text-align:center;}
 .btn_selected{
     border: 1px #000000 solid
 }
+.img-fluid{
+    max-width: 100%;
+    height: auto;
+}
+.card-content{
+    bottom: 0;
+ }
+#PatternProduct{
+    display: none;
+}

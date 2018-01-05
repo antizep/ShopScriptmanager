@@ -1,106 +1,94 @@
 <button type="submit" class="btn btn-danger-outline col-md-6" onclick="loadContent('./html/AddProductForm.html')" aria-pressed="true">Новый товар</button>
 <button type="submit" class="btn btn-danger-outline col-md-6 btn_selected"  aria-pressed="true">Все товары</button>
 
-<div class="col-md-12" style="margin-top: 5px">
+<div id="Products" class="col-md-12 container" style="margin-top: 5px">
+    <div id="PatternProduct">
     <div class="card col-md-3">
 
         <div class="embed-responsive embed-responsive-16by9">
+            <iframe  src="@Video" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        </div>
+        <img class="card-img-top img-circle img-fluid" src="@Image" alt="Image_@NameProduct">
+        <div class="card-content media-bottom">
+            <div class="card-block">
+                <h4 class="card-title">@NameProduct</h4>
+                <p class="card-text">@Description</p>
+            </div>
 
-            <iframe  src="https://www.youtube.com/embed/cL6UcD_zmHE" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            <div class="input-group">
+                <div class="input-group-addon">цена</div>
+                <div class="input-group-addon">@Price</div>
+                <div class="input-group-addon">&#8381;</div>
+            </div>
+            <p class="card-text">@Provider</p>
+            <div class="input-group purchase">
+                <div class="input-group-addon">закуп</div>
+                <div class="input-group-addon">@Purchase</div>
+                <div class="input-group-addon">&#8381;</div>
+            </div>
+            <div class="input-group purchase">
+                <div class="input-group-addon">прибыль</div>
+                <div class="input-group-addon">@Profit</div>
+                <div class="input-group-addon">&#8381;</div>
+            </div>
 
-        </div>
-        <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-block">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <div class="card-block">
+                <button>Изменить</button>
+            </div>
         </div>
     </div>
-    <div class="card col-md-3">
-        <img class="card-img-top" data-src="..." alt="Card image cap">
-        <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-block">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card col-md-3">
-        <img class="card-img-top" data-src="..." alt="Card image cap">
-        <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-block">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card col-md-3">
-        <img class="card-img-top" data-src="..." alt="Card image cap">
-        <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-block">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card col-md-3">
-        <img class="card-img-top" data-src="..." alt="Card image cap">
-        <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-block">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
-    </div>
-    <div class="card col-md-3">
-        <img class="card-img-top" data-src="..." alt="Card image cap">
-        <div class="card-block">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
-        <div class="card-block">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-        </div>
     </div>
 </div>
+<script>
+
+    var createCardProduct = function () {
+        var pattern = $(".card").get(0).outerHTML;
+        //console.log(pattern);
+        var rsp;
+            $.ajax({
+            url: "/SelectProducts",
+            async:false,
+
+
+            type: "POST",
+            data: "id="+id+"&token="+token,
+            success: function (data) {
+                if(data.authentication) {
+                    rsp = data.products;
+                    console.log(data);
+                    return rsp;
+                }else {
+
+                }
+            },
+            error: function (xhr, str) {
+                console.log("что то пошло не так")
+            },
+            dataType: "json"
+        });
+
+
+        for(var i=0;i<rsp.length;i++){
+            var product  = pattern;
+            product = product.replace(/@NameProduct/g,rsp[i].productByProduct.name);
+            product = product.replace(/@Description/g,rsp[i].productByProduct.description);
+
+            var purchase = rsp[i].productByProduct.purchase;
+            var saling= rsp[i].productByProduct.selling;
+            product = product.replace(/@Price/g,saling);
+
+            if(purchase) {
+                var profit = saling-purchase;
+                product = product.replace(/@Purchase/g, purchase);
+                product = product.replace(/@Profit/g,profit);
+                product = product.replace(/@Provider/g,rsp[i].providerByProvider.name);
+            }
+
+            $("#Products").append(product);
+        }
+
+    };
+
+    createCardProduct();
+
+</script>

@@ -5,7 +5,7 @@ public class Authentification {
     private String login;
     private long userId;
     private String token;
-
+    private int role;
     public String getLogin() {
         return login;
     }
@@ -30,6 +30,8 @@ public class Authentification {
         this.token = token;
     }
 
+
+
     @Override
     public boolean equals(Object authentification){
 
@@ -38,5 +40,13 @@ public class Authentification {
         Authentification a = (Authentification) authentification;
 
         return a.getUserId() == this.getUserId() && a.getToken().equals(getToken());
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
     }
 }
