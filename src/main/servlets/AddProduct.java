@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 @WebServlet(name = "AddProduct",
         urlPatterns = "/AddProduct")
 @MultipartConfig
+
 //не использовать очень сырая версия
 public class AddProduct extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -47,9 +48,12 @@ public class AddProduct extends HttpServlet {
         EntityProduct product = new EntityProduct();
         product.setName(nameProduct);
         product.setDescription(description);
-        product.setPurchase(Integer.parseInt(purchase));
-        product.setSelling(Integer.parseInt(selling));
-
+        try {
+            product.setPurchase(Integer.parseInt(purchase));
+            product.setSelling(Integer.parseInt(selling));
+        }catch (NumberFormatException e){
+            System.out.println(".!.");
+        }
         ProductDao productDao = ctx.getBean("jpaProduct",ProductDao.class);
 
         productDao.save(product);
@@ -81,7 +85,8 @@ public class AddProduct extends HttpServlet {
 
             i++;
             String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            String path = getServletContext().getRealPath("/products/"+i+"/employees/");
+            FilesUtil.setImageName(i+".");
+            String path = System.getProperty("jboss.server.base.dir")+"/images/"+product.getId()+"/";
             System.out.println(path);
             FilesUtil.saveLogo(filePart,path);
 

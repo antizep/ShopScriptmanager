@@ -4,14 +4,16 @@
 <div id="Products" class="col-md-12 container" style="margin-top: 5px">
     <div id="PatternProduct">
     <div class="card col-md-3">
-
-        <div class="embed-responsive embed-responsive-16by9">
-            <iframe  src="@Video" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+        <div class="image">
+            <div class="embed-responsive embed-responsive-16by9" style="display: none">
+                <iframe  src="@Video" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            </div>
+            <img class="img-fluid vertical_center" onload="resizeCardProduct()" src="@Image" alt="Image_@NameProduct">
         </div>
-        <img class="card-img-top img-circle img-fluid" src="@Image" alt="Image_@NameProduct">
-        <div class="card-content media-bottom">
+
+        <div class="card-content">
             <div class="card-block">
-                <h4 class="card-title">@NameProduct</h4>
+                <p class=" h4 card-title text-center">@NameProduct</p>
                 <p class="card-text">@Description</p>
             </div>
 
@@ -50,7 +52,7 @@
             async:false,
 
 
-            type: "POST",
+            type: "GET",
             data: "id="+id+"&token="+token,
             success: function (data) {
                 if(data.authentication) {
@@ -71,24 +73,33 @@
         for(var i=0;i<rsp.length;i++){
             var product  = pattern;
             product = product.replace(/@NameProduct/g,rsp[i].productByProduct.name);
-            product = product.replace(/@Description/g,rsp[i].productByProduct.description);
+            var description = rsp[i].productByProduct.description;
+            if(description.length> 64){
+                description = description.slice(0,64)+ " ...";
+            }
+            product = product.replace(/@Description/g,description);
 
             var purchase = rsp[i].productByProduct.purchase;
             var saling= rsp[i].productByProduct.selling;
+
             product = product.replace(/@Price/g,saling);
 
+            product = product.replace(/@Image/,"/images/"+rsp[i].productByProduct.id+"/1.jpg");
+//todo у продукта дефалт изображение иначе лишние запросы к серверу
             if(purchase) {
+
                 var profit = saling-purchase;
                 product = product.replace(/@Purchase/g, purchase);
                 product = product.replace(/@Profit/g,profit);
                 product = product.replace(/@Provider/g,rsp[i].providerByProvider.name);
+
             }
 
             $("#Products").append(product);
         }
 
-    };
 
+    };
     createCardProduct();
 
 </script>

@@ -28,3 +28,8 @@ td,th {text-align:center;}
 #PatternProduct{
     display: none;
 }
+.vertical_center {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}

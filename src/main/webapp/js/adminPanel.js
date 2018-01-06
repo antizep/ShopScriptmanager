@@ -96,12 +96,29 @@ var selectProvider = function () {
 var resizeCardProduct = function(){
     $('.container').each(function(){
         var highestBox = 0;
+        var highesText = 0;
+        var highesImage = 0;
         $('.col-md-3 ', this).each(function(){
             if($(this).height() > highestBox) {
                 highestBox = $(this).height();
             }
         });
-        $('.col-md-3 ',this).height(highestBox);
+
+        $('.card-block',this).each(function () {
+            if($(this).height() > highesText) {
+                highesText = $(this).height();
+            }
+        });
+
+        $('.image',this).each(function () {
+            if($(this).height() > highesImage){
+                highesImage = $(this).height()
+            }
+        });
+
+        $('.image',this).height(highesImage);
+        $('.card-block',this).height(highesText);
+        //$('.col-md-3 ',this).height(highestBox);
     });
 };
 

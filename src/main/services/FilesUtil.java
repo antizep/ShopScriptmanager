@@ -30,6 +30,7 @@ public class FilesUtil {
                         .getFileName()
                         .toString()
                         .split("\\.")[1];
+                mem = "jpg";
             } catch (ArrayIndexOutOfBoundsException e) {
                 e.printStackTrace();
                 return false;
