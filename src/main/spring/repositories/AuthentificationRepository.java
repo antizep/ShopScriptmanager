@@ -1,11 +1,10 @@
 package spring.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import spring.entity.AuthenticationEntity;
-import spring.entity.RolesEntity;
+import spring.entity.EntityAuthentication;
 
-public interface AuthentificationRepository extends CrudRepository<AuthenticationEntity, Long> {
+public interface AuthentificationRepository extends CrudRepository<EntityAuthentication, Long> {
 
-    AuthenticationEntity findAuthenticationEntityByLoginAndPassword(String login, String password);
+    EntityAuthentication findAuthenticationEntityByLoginAndPassword(String login, String password);
 
 }

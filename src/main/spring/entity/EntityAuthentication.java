@@ -6,12 +6,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "authentication", schema = "public", catalog = "postgres")
-public class AuthenticationEntity implements Serializable{
+public class EntityAuthentication implements Serializable{
 
     private long id;
     private String login;
     private String password;
-    private RolesEntity role;
+    private EntityRoles role;
 
     @Id
     @Column(name = "id")
@@ -46,11 +46,11 @@ public class AuthenticationEntity implements Serializable{
 
     @OneToOne
     @JoinColumn(name = "role", referencedColumnName = "id_role")
-    public RolesEntity getRole() {
+    public EntityRoles getRole() {
         return role;
     }
 
-    public void setRole(RolesEntity role) {
+    public void setRole(EntityRoles role) {
         this.role = role;
     }
 
@@ -58,7 +58,7 @@ public class AuthenticationEntity implements Serializable{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        AuthenticationEntity that = (AuthenticationEntity) o;
+        EntityAuthentication that = (EntityAuthentication) o;
         return id == that.id &&
                 Objects.equals(login, that.login) &&
                 Objects.equals(password, that.password) &&

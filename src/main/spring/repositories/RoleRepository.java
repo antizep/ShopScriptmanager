@@ -1,11 +1,8 @@
 package spring.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import spring.entity.RolesEntity;
+import spring.entity.EntityRoles;
 
-public interface RoleRepository extends CrudRepository<RolesEntity, Integer> {
-    RolesEntity findByIdRole(int id);
+public interface RoleRepository extends CrudRepository<EntityRoles, Integer> {
+    EntityRoles findByIdRole(int id);
 }

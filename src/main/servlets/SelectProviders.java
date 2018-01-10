@@ -1,6 +1,6 @@
 package servlets;
 
-import models.Authentification;
+import models.Authentication;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.web.context.WebApplicationContext;
@@ -33,13 +33,13 @@ public class SelectProviders extends HttpServlet {
 
         JSONObject rspJ = new JSONObject();
 
-        Authentification authentification = new Authentification();
+        Authentication authentication = new Authentication();
 
-        authentification.setUserId(Long.parseLong(idS));
-        authentification.setToken(token);
+        authentication.setUserId(Long.parseLong(idS));
+        authentication.setToken(token);
 
-        if(SessionService.hasAuth(authentification)) {
-            if (authentification.getRole() == SessionService.ROLE_ADMIN) {
+        if(SessionService.hasAuth(authentication)) {
+            if (authentication.getRole() == SessionService.ROLE_ADMIN) {
                 ProviderDao repository = ctx.getBean("jpaProviderService", ProviderDao.class);
 
                 List<EntityProvider> providers = repository.selectAll();

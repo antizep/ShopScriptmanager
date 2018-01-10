@@ -1,10 +1,5 @@
 package main;
 
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-import spring.entity.RolesEntity;
-import spring.interfaces.RoleDao;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +16,7 @@ public class tester extends HttpServlet {
 //        WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //        RoleDao service = ctx.getBean("jpaAuntificationService", RoleDao.class);
 //
-//        RolesEntity e = service.findById(1);
+//        EntityRoles e = service.findById(1);
 //        System.out.println(e+"222");
 //        response.getWriter().print(e);
 

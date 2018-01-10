@@ -1,6 +1,6 @@
 package servlets;
 
-import models.Authentification;
+import models.Authentication;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.web.context.WebApplicationContext;
@@ -8,7 +8,6 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import services.SessionService;
 import spring.entity.EntityPrice;
 import spring.interfaces.PriceDao;
-import spring.interfaces.ProductDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,15 +27,15 @@ public class SelectProducts extends HttpServlet {
 
         response.setContentType("application/json");
 
-        Authentification authentification = new Authentification();
+        Authentication authentication = new Authentication();
 
         String idS = request.getParameter("id");
         String token = request.getParameter("token");
 
-        authentification.setUserId(Long.parseLong(idS));
-        authentification.setToken(token);
+        authentication.setUserId(Long.parseLong(idS));
+        authentication.setToken(token);
 
-        if(SessionService.hasAuth(authentification)) {
+        if(SessionService.hasAuth(authentication)) {
 
             WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
@@ -46,7 +45,7 @@ public class SelectProducts extends HttpServlet {
 
             JSONArray pricesJ = new JSONArray(prices);
             JSONObject responseJ = new JSONObject();
-            if(authentification.getRole() != SessionService.ROLE_ADMIN){
+            if(authentication.getRole() != SessionService.ROLE_ADMIN){
                 for(int i=0; i<pricesJ.length();i++){
                     System.out.println(pricesJ.getJSONObject(i));
                     pricesJ.getJSONObject(i).getJSONObject("productByProduct").remove("purchase");

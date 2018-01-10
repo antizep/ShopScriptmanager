@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "roles", schema = "public", catalog = "postgres")
-public class RolesEntity implements Serializable {
+public class EntityRoles implements Serializable {
     private String name;
     private int idRole;
     private Integer chmod;
@@ -45,7 +45,7 @@ public class RolesEntity implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RolesEntity that = (RolesEntity) o;
+        EntityRoles that = (EntityRoles) o;
         return idRole == that.idRole &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(chmod, that.chmod);

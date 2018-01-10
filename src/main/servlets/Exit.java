@@ -1,6 +1,6 @@
 package servlets;
 
-import models.Authentification;
+import models.Authentication;
 import org.json.JSONObject;
 import services.SessionService;
 
@@ -23,12 +23,12 @@ public class Exit extends HttpServlet {
 
             long id = Long.parseLong(request.getParameter("id"));
             String token = request.getParameter("token");
-            Authentification authentification = new Authentification();
+            Authentication authentication = new Authentication();
 
-            authentification.setToken(token);
-            authentification.setUserId(id);
+            authentication.setToken(token);
+            authentication.setUserId(id);
 
-            SessionService.deleteAuthentication(authentification);
+            SessionService.deleteAuthentication(authentication);
             JSONObject  rsp= new JSONObject();
             rsp.put("status","ok");
 

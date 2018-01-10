@@ -1,10 +1,9 @@
 package spring.interfaces;
 
-import org.springframework.data.repository.CrudRepository;
-import spring.entity.AuthenticationEntity;
+import spring.entity.EntityAuthentication;
 
 public interface AuthenticationDao {
 
-    AuthenticationEntity auntification (AuthenticationEntity authenticationEntity);
+    EntityAuthentication auntification (EntityAuthentication entityAuthentication);
 
 }

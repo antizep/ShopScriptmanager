@@ -1,7 +1,7 @@
 package spring.interfaces;
 
-import spring.entity.RolesEntity;
+import spring.entity.EntityRoles;
 
 public interface RoleDao {
-    RolesEntity findById(int id);
+    EntityRoles findById(int id);
 }

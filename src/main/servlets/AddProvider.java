@@ -1,15 +1,12 @@
 package servlets;
 
-import models.Authentification;
+import models.Authentication;
 import org.json.JSONObject;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import services.FilesUtil;
 import services.SessionService;
 import spring.entity.EntityProvider;
-import spring.interfaces.AuthenticationDao;
 import spring.interfaces.ProviderDao;
-import spring.repositories.ProviderRepository;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -17,11 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 import java.io.IOException;
-import java.nio.file.Paths;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @WebServlet(name = "AddProvider", urlPatterns = "/addProvider")
 @MultipartConfig
@@ -46,12 +39,12 @@ public class AddProvider extends HttpServlet {
         String URL = request.getParameter("URL");
         String remark = request.getParameter("remark");
 
-        Authentification authentification = new Authentification();
+        Authentication authentication = new Authentication();
 
-        authentification.setUserId(Long.parseLong(idS));
-        authentification.setToken(token);
+        authentication.setUserId(Long.parseLong(idS));
+        authentication.setToken(token);
 
-        if(SessionService.hasAuth(authentification)){
+        if(SessionService.hasAuth(authentication)){
 
             EntityProvider provider = new EntityProvider();
 

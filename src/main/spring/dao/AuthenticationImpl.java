@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import spring.entity.AuthenticationEntity;
+import spring.entity.EntityAuthentication;
 import spring.interfaces.AuthenticationDao;
 import spring.repositories.AuthentificationRepository;
 
@@ -18,9 +18,9 @@ public class AuthenticationImpl implements AuthenticationDao {
     AuthentificationRepository repository;
 
     @Override
-    public AuthenticationEntity auntification(AuthenticationEntity authenticationEntity) {
+    public EntityAuthentication auntification(EntityAuthentication entityAuthentication) {
 
-        return repository.findAuthenticationEntityByLoginAndPassword(authenticationEntity.getLogin(),authenticationEntity.getPassword());
+        return repository.findAuthenticationEntityByLoginAndPassword(entityAuthentication.getLogin(), entityAuthentication.getPassword());
 
     }
 }

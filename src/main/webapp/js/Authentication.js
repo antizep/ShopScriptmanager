@@ -12,6 +12,7 @@ window.onload = function(){
         $("#auth").css("display","none");
         $("#registration").css("display","none");
         $("#lk").css("display","block");
+        $("#profile").attr("href","/profile/"+id);
         if(role == 1){
             $("#admin").css("display","block");
         }
@@ -19,7 +20,7 @@ window.onload = function(){
 
 };
 
-var  authentification = function () {
+var  authentication = function () {
 
     var response;
     var auth = $('#authentication');

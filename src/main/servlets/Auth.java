@@ -1,14 +1,13 @@
 package servlets;
 
-import models.Authentification;
+import models.Authentication;
 import org.json.JSONObject;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import services.GenerateToken;
 import services.SessionService;
-import spring.entity.AuthenticationEntity;
+import spring.entity.EntityAuthentication;
 import spring.interfaces.AuthenticationDao;
-import spring.interfaces.RoleDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,33 +29,33 @@ public class Auth extends HttpServlet {
 
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        AuthenticationEntity authenticationEntity = new AuthenticationEntity();
+        EntityAuthentication entityAuthentication = new EntityAuthentication();
 
-        authenticationEntity.setLogin(login);
-        authenticationEntity.setPassword(password);
+        entityAuthentication.setLogin(login);
+        entityAuthentication.setPassword(password);
 
         WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
         AuthenticationDao service = ctx.getBean("jpaAuthenticationService", AuthenticationDao.class);
 
-        authenticationEntity = service.auntification(authenticationEntity);
+        entityAuthentication = service.auntification(entityAuthentication);
 
-        if(authenticationEntity != null) {
+        if(entityAuthentication != null) {
 
-            Authentification authentification = new Authentification();
+            Authentication authentication = new Authentication();
 
-            authentification.setLogin(authenticationEntity.getLogin());
-            authentification.setUserId(authenticationEntity.getId());
-            authentification.setToken(GenerateToken.generateToken(authentification));
+            authentication.setLogin(entityAuthentication.getLogin());
+            authentication.setUserId(entityAuthentication.getId());
+            authentication.setToken(GenerateToken.generateToken(authentication));
 
-            authentification.setRole(authenticationEntity.getRole().getIdRole());
+            authentication.setRole(entityAuthentication.getRole().getIdRole());
 
             JSONObject auth =new JSONObject();
 
-            auth.put("id",authentification.getUserId());
-            auth.put("token",authentification.getToken());
-            auth.put("role",authenticationEntity.getRole().getIdRole());
-            SessionService.addAuthentication(authentification);
+            auth.put("id", authentication.getUserId());
+            auth.put("token", authentication.getToken());
+            auth.put("role", entityAuthentication.getRole().getIdRole());
+            SessionService.addAuthentication(authentication);
 
             response.getWriter().print(auth);
 
