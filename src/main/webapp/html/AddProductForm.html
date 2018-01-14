@@ -1,5 +1,5 @@
 <button type="submit" class="btn btn-danger-outline col-md-6 btn_selected" aria-pressed="true">Новый товар</button>
-<button type="submit" class="btn btn-danger-outline col-md-6" onclick="loadContent('./html/AllProduct.html')" aria-pressed="true">Все товары</button>
+<button type="submit" class="btn btn-danger-outline col-md-6" onclick="loadContent('./html/AllProduct.html',productLoaden)" aria-pressed="true">Все товары</button>
 
 
 <form action="../AddProduct" method="POST" enctype="multipart/form-data">
@@ -80,4 +80,7 @@
         }
     }
     document.getElementById('fileMulti').addEventListener('change', handleFileSelectMulti, false);
+    var productLoaden = function () {
+        createCardProduct(null);
+    }
 </script>

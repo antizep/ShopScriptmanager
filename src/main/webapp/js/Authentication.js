@@ -1,8 +1,9 @@
 var token;
 var id;
 var role;
+var productLoaden = false;
 
-window.onload = function(){
+var auth = function(){
 
     token = localStorage.getItem("token");
     id = localStorage.getItem("id");
@@ -19,7 +20,7 @@ window.onload = function(){
     }
 
 };
-
+auth();
 var  authentication = function () {
 
     var response;
@@ -32,10 +33,14 @@ var  authentication = function () {
         success: function(data) {
 
             response=data;
-            localStorage.setItem("token",response.token);
-            localStorage.setItem("id",response.id);
-            localStorage.setItem("role",response.role);
-            location.reload();
+            if(!response.error) {
+                localStorage.setItem("token", response.token);
+                localStorage.setItem("id", response.id);
+                localStorage.setItem("role", response.role);
+                location.reload();
+            }else {
+                alert("ошибка входа");
+            }
         },
         error:  function(xhr, str){
             alert('Возникла ошибка: ' + xhr.responseCode);

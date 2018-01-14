@@ -24,8 +24,12 @@ public class SessionService {
 
         if(authentications.size()>0) {
             int id= authentications.indexOf(auth);
-            auth.setRole(authentications.get(id).getRole());
-            return authentications.contains(auth);
+            if(id!=-1) {
+                auth.setRole(authentications.get(id).getRole());
+                return true;
+            }else {
+                return false;
+            }
         }else {
             return false;
         }

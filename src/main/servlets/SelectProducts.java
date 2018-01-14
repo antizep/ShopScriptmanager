@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "SelectProduct",
 urlPatterns = "/SelectProducts")
@@ -32,31 +34,35 @@ public class SelectProducts extends HttpServlet {
         String idS = request.getParameter("id");
         String token = request.getParameter("token");
 
-        authentication.setUserId(Long.parseLong(idS));
-        authentication.setToken(token);
+        WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
-        if(SessionService.hasAuth(authentication)) {
+        PriceDao priceDao = ctx.getBean("jpaPrice", PriceDao.class);
 
-            WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+        List<EntityPrice> prices = priceDao.findAll();
 
-            PriceDao priceDao = ctx.getBean("jpaPrice", PriceDao.class);
+        JSONArray pricesJ = new JSONArray(prices);
+        JSONObject responseJ = new JSONObject();
 
-            List<EntityPrice> prices = priceDao.findAll();
+        Pattern number = Pattern.compile("^[0-9]{1,10}$");
+        Matcher mat = number.matcher(idS);
 
-            JSONArray pricesJ = new JSONArray(prices);
-            JSONObject responseJ = new JSONObject();
-            if(authentication.getRole() != SessionService.ROLE_ADMIN){
-                for(int i=0; i<pricesJ.length();i++){
-                    System.out.println(pricesJ.getJSONObject(i));
-                    pricesJ.getJSONObject(i).getJSONObject("productByProduct").remove("purchase");
-                    pricesJ.getJSONObject(i).remove("providerByProvider");
-                }
-            }
-
-            responseJ.put("products", pricesJ);
-            responseJ.put("authentication",true);
-            response.getWriter().print(responseJ);
+        if(mat.matches()) {
+            authentication.setUserId(Long.parseLong(idS));
+            authentication.setToken(token);
         }
+
+
+        if(!SessionService.hasAuth(authentication) || authentication.getRole() != SessionService.ROLE_ADMIN) {
+            for (int i = 0; i < pricesJ.length(); i++) {
+                System.out.println(pricesJ.getJSONObject(i));
+                pricesJ.getJSONObject(i).getJSONObject("productByProduct").remove("purchase");
+                pricesJ.getJSONObject(i).remove("providerByProvider");
+            }
+        }
+
+        responseJ.put("products", pricesJ);
+        responseJ.put("authentication",true);
+        response.getWriter().print(responseJ);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

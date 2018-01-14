@@ -5,9 +5,13 @@ var adminLoad = function(){
     });
 };
 
-var loadContent = function(loadForm){
+var loadContent = function(loadForm,callback){
     $.get(loadForm, function (data) {
         $('#body_table').html(data);
+        if(callback!=null) {
+            
+            callback();
+        }
     });
 };
 
@@ -120,6 +124,65 @@ var resizeCardProduct = function(){
         $('.card-block',this).height(highesText);
         //$('.col-md-3 ',this).height(highestBox);
     });
+};
+
+
+var createCardProduct = function (callback) {
+    var pattern = $(".card").get(0).outerHTML;
+    //console.log(pattern);
+    var rsp;
+    $.ajax({
+        url: "/SelectProducts",
+        async:false,
+
+
+        type: "GET",
+        data: "id="+id+"&token="+token,
+        success: function (data) {
+            rsp = data.products;
+            console.log(data);
+            return rsp;
+        },
+        error: function (xhr, str) {
+            console.log("что то пошло не так")
+        },
+        dataType: "json"
+    });
+
+
+    for(var i=0;i<rsp.length;i++){
+        var product  = pattern;
+        product = product.replace(/@NameProduct/g,rsp[i].productByProduct.name);
+        var description = rsp[i].productByProduct.description;
+        if(description.length> 64){
+            description = description.slice(0,64)+ " ...";
+        }
+        product = product.replace(/@Description/g,description);
+
+        var purchase = rsp[i].productByProduct.purchase;
+        var saling= rsp[i].productByProduct.selling;
+
+        product = product.replace(/@Price/g,saling);
+
+        product = product.replace(/@Image/,"/images/"+rsp[i].productByProduct.id+"/1.jpg");
+//todo у продукта дефалт изображение иначе лишние запросы к серверу
+        if(purchase) {
+
+            var profit = saling-purchase;
+            product = product.replace(/@Purchase/g, purchase);
+            product = product.replace(/@Profit/g,profit);
+            product = product.replace(/@Provider/g,rsp[i].providerByProvider.name);
+
+        }
+
+        $("#Products").append(product);
+    }
+
+    resizeCardProduct();
+
+    if(callback!=null) {
+        callback();
+    }
 };
 
 
