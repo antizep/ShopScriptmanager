@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 @WebFilter(filterName = "ImageFilter",
-urlPatterns = "/images/*")
+urlPatterns = "/img/*")
 public class ImageFilter implements Filter {
     public void destroy() {
     }
@@ -19,6 +19,9 @@ public class ImageFilter implements Filter {
         HttpServletRequest request  = (HttpServletRequest) req;
         String URI = System.getProperty("jboss.server.base.dir")+request.getRequestURI();
         File image = new File(URI);
+        if(!image.exists()){
+            image = new File(System.getProperty("jboss.server.base.dir")+"/img/default.jpg");
+        }
         resp.setContentType(new MimetypesFileTypeMap().getContentType(image));
 
         try(BufferedOutputStream bos = new BufferedOutputStream(resp.getOutputStream())) {

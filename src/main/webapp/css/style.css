@@ -22,9 +22,34 @@ td,th {text-align:center;}
     max-width: 100%;
     height: auto;
 }
+
+.basket{
+
+    position: fixed;
+    bottom: 15px;
+    z-index: 1;
+    display: none;
+    right: 15px;
+}
+
+.img-nav-bar{
+
+    width:auto;
+    max-height: 50px;
+}
+#link-naw-bar{
+    padding-top: 0;
+    padding-bottom: 0;
+}
 .card-content{
     bottom: 0;
  }
+.count_product{
+    top: 3px;
+    border-radius: 3px;
+    background: rgba(255, 14, 14, 0.73);
+    color: #0f0f0f;
+}
 #PatternProduct{
     display: none;
 }

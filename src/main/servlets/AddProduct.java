@@ -86,7 +86,7 @@ public class AddProduct extends HttpServlet {
             i++;
             String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
             FilesUtil.setImageName(i+".");
-            String path = System.getProperty("jboss.server.base.dir")+"/images/"+product.getId()+"/";
+            String path = System.getProperty("jboss.server.base.dir")+"/img/"+product.getId()+"/";
             System.out.println(path);
             FilesUtil.saveLogo(filePart,path);
 

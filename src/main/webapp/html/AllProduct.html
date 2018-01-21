@@ -9,7 +9,7 @@
             <div class="embed-responsive embed-responsive-16by9" style="display: none">
                 <iframe  src="@Video" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
             </div>
-            <img class="img-fluid vertical_center" onload="resizeCardProduct()" src="@Image" alt="Image_@NameProduct">
+            <img class="img-fluid" onload="resizeCardProduct()" src="@Image" alt="Image_@NameProduct">
         </div>
 
         <div class="card-content">
@@ -23,25 +23,35 @@
                 <div class="input-group-addon">@Price</div>
                 <div class="input-group-addon">&#8381;</div>
             </div>
-            <p class="card-text">@Provider</p>
-            <div class="input-group purchase">
-                <div class="input-group-addon">закуп</div>
-                <div class="input-group-addon">@Purchase</div>
-                <div class="input-group-addon">&#8381;</div>
+            <div class="user_block" style="display: none">
+                <div class="card-block">
+                    <button onclick="addBasket(@Id)" >купить</button>
+                </div>
             </div>
-            <div class="input-group purchase">
-                <div class="input-group-addon">прибыль</div>
-                <div class="input-group-addon">@Profit</div>
-                <div class="input-group-addon">&#8381;</div>
-            </div>
+            <div class="admin_block">
+                <p class="card-text">@Provider</p>
+                <div class="input-group purchase">
+                    <div class="input-group-addon">закуп</div>
+                    <div class="input-group-addon">@Purchase</div>
+                    <div class="input-group-addon">&#8381;</div>
+                </div>
+                <div class="input-group purchase">
+                    <div class="input-group-addon">прибыль</div>
+                    <div class="input-group-addon">@Profit</div>
+                    <div class="input-group-addon">&#8381;</div>
+                </div>
 
-            <div class="card-block">
-                <button>Изменить</button>
+                <div class="card-block">
+                    <button>Изменить</button>
+                </div>
             </div>
         </div>
     </div>
     </div>
+    <div class="basket">
+        <a id="link-naw-bar" href="#">
+            <img class="img-nav-bar" src="/images/basket.png">
+            <div class="count_product">100</div>
+        </a>
+    </div>
 </div>
-<script>
-
-</script>

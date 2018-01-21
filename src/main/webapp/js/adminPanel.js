@@ -1,3 +1,4 @@
+var resizeCount = 0;
 var adminLoad = function(){
 
     $.get('./html/AdminPanel.html', function (data) {
@@ -98,6 +99,7 @@ var selectProvider = function () {
 };
 
 var resizeCardProduct = function(){
+
     $('.container').each(function(){
         var highestBox = 0;
         var highesText = 0;
@@ -119,11 +121,13 @@ var resizeCardProduct = function(){
                 highesImage = $(this).height()
             }
         });
-
+        console.log("image"+highesImage);
         $('.image',this).height(highesImage);
         $('.card-block',this).height(highesText);
         //$('.col-md-3 ',this).height(highestBox);
     });
+    resizeCount++;
+    console.log("resized"+resizeCount);
 };
 
 
@@ -164,8 +168,9 @@ var createCardProduct = function (callback) {
 
         product = product.replace(/@Price/g,saling);
 
-        product = product.replace(/@Image/,"/images/"+rsp[i].productByProduct.id+"/1.jpg");
+        product = product.replace(/@Image/,"/img/"+rsp[i].productByProduct.id+"/1.jpg");
 //todo у продукта дефалт изображение иначе лишние запросы к серверу
+        product = product.replace(/@Id/,rsp[i].id);
         if(purchase) {
 
             var profit = saling-purchase;
@@ -173,12 +178,13 @@ var createCardProduct = function (callback) {
             product = product.replace(/@Profit/g,profit);
             product = product.replace(/@Provider/g,rsp[i].providerByProvider.name);
 
+
         }
 
         $("#Products").append(product);
     }
-
-    resizeCardProduct();
+    console.log("loaden");
+    //resizeCardProduct();
 
     if(callback!=null) {
         callback();

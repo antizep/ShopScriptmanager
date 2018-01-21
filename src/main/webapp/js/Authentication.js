@@ -1,14 +1,13 @@
 var token;
 var id;
 var role;
-var productLoaden = false;
-
+var i = 0;
 var auth = function(){
 
     token = localStorage.getItem("token");
     id = localStorage.getItem("id");
     role =localStorage.getItem("role");
-    console.log(id+":"+token);
+    console.log(id+":"+token+":"+role);
     if(id && token){
         $("#auth").css("display","none");
         $("#registration").css("display","none");
@@ -17,10 +16,11 @@ var auth = function(){
         if(role == 1){
             $("#admin").css("display","block");
         }
+        console.log(i);
     }
+    i++;
 
 };
-auth();
 var  authentication = function () {
 
     var response;
@@ -65,6 +65,7 @@ var logout = function (){
             //var response=data;
             localStorage.removeItem("token");
             localStorage.removeItem("id");
+            localStorage.removeItem("role");
             location.reload();
         },
         error:  function(xhr, str){
