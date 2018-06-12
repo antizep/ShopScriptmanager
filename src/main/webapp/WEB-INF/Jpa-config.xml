@@ -4,7 +4,7 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:jee="http://www.springframework.org/schema/jee"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context
@@ -12,20 +12,20 @@
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/data/jpa
-       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-
-">
+       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
 
 
-    <bean id="dataSource"
+<!--    <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource"
-          p:driverClassName="org.postgresql.Driver"
-          p:url="jdbc:postgresql://194.58.119.151:5432/postgres"
-          p:username="postgres"
-          p:password="j7h12Q22"
-    />
-    <context:property-placeholder
-            location="classpath:*/jdbc.properties"/>
+          p:driverClassName="com.h2datasource.h2"
+          p:url="jdbc:h2:tcp://localhost/~/test"
+          p:username="sa"
+          p:password="sa"
+    />-->
+    <jee:jndi-lookup  id="dataSource"
+
+                      jndi-name="java:/tst" resource-ref="true"  />
+
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager"
           id="transactionManager">
@@ -43,12 +43,12 @@
         <property name="packagesToScan" value="spring"/>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</prop>
                 <prop key="hibernate.max_fetch_depth">3</prop>
                 <prop key="hibernate.jdbc_fetch_size">50</prop>
                 <prop key="hibernate.jdbc_batch_size">10</prop>
                 <prop key="hibernate.show_sql">true</prop>
-
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
 
             </props>
         </property>

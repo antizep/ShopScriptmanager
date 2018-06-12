@@ -3,7 +3,7 @@ package spring.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "personal_data_parameter", schema = "public", catalog = "postgres")
+@Table(name = "personal_data_parameter")
 public class EntityPersonalDataParameter {
     private int id;
     private String name;

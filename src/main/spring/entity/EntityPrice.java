@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "price", schema = "public", catalog = "postgres")
+@Table(name = "price")
 public class EntityPrice implements Serializable{
     private EntityProvider providerByProvider;
     private EntityProduct productByProduct;
