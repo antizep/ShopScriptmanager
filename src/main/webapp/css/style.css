@@ -1,5 +1,52 @@
-.menu{
+.heed{
+    padding: 50px 25px 0px;
+}
 
+.form-search-heed{
+    float: none;
+    text-align: center;
+    margin-top: 25px;
+
+}
+.carousel-control.left{
+    background-image: none;
+}
+.carousel-control.right{
+    background-image: none;
+}
+.form-search-heed .input-group{
+
+    height: 40px;
+    width: 300px;
+}
+.input-group input{
+    border-radius: 20px 0px 0px 20px;
+    height: 40px;
+}
+.input-group a{
+
+    border-radius: 0px 20px 20px 0px;
+}
+.input-group a img{
+    width: 21px;
+}
+
+.icon-group{
+    margin-top: 25px;
+}
+.icon-group img{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.container{
+    margin-top: 0;
+}
+.carousel{
+    background: rgba(42, 116, 157, 0.09);
+    height: 400px;
+}
+.carousel img{
+    height: 400px;
 }
 .promo{
     background-color: #aaaaaa;

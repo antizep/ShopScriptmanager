@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: local('Source Serif Pro Semibold'), local('SourceSerifPro-Semibold'), url('Sourceserifprosemibold.woff2') format('woff2'), url('Sourceserifprosemibold.woff') format('woff'), url('Sourceserifprosemibold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: local('Source Serif Pro ExtraLight'), local('SourceSerifPro-ExtraLight'), url('Sourceserifproextralight.woff2') format('woff2'), url('Sourceserifproextralight.woff') format('woff'), url('Sourceserifproextralight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: local('Source Serif Pro Light'), local('SourceSerifPro-Light'), url('Sourceserifprolight.woff2') format('woff2'), url('Sourceserifprolight.woff') format('woff'), url('Sourceserifprolight.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: local('Source Serif Pro'), local('SourceSerifPro-Regular'), url('Sourceserifpro.woff2') format('woff2'), url('Sourceserifpro.woff') format('woff'), url('Sourceserifpro.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: local('Source Serif Pro Black'), local('SourceSerifPro-Black'), url('Sourceserifproblack.woff2') format('woff2'), url('Sourceserifproblack.woff') format('woff'), url('Sourceserifproblack.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Source Serif Pro';
+    src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'), url('Sourceserifprobold.woff2') format('woff2'), url('Sourceserifprobold.woff') format('woff'), url('Sourceserifprobold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
