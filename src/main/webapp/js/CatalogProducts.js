@@ -17,6 +17,7 @@ var basket = [];
 var addBasket = function(id){
     basket.push(id);
     $(".basket").show("slow");
+
     for(var i=0;i<basket.length;i++) {
         console.log(basket);
     }

@@ -17,10 +17,10 @@ public class ImageFilter implements Filter {
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest request  = (HttpServletRequest) req;
-        String URI = System.getProperty("jboss.server.base.dir")+request.getRequestURI();
+        String URI = System.getProperty("upload.dir")+request.getRequestURI();
         File image = new File(URI);
         if(!image.exists()){
-            image = new File(System.getProperty("jboss.server.base.dir")+"/img/default.jpg");
+            image = new File(System.getProperty("upload.dir")+"/img/default.jpg");
         }
         resp.setContentType(new MimetypesFileTypeMap().getContentType(image));
 
