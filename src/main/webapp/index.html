@@ -94,14 +94,15 @@
                     <ul class="dropdown-menu">
                         <li><a href="#">Регистрация</a></li>
                         <li class="divider"></li>
-                        <form action="#" method="get">
+                        <form action="javaScript:void(null)" onsubmit="registration()" id="regForm" method="get">
                             email:<br>
-                            <input type="text"><br>
+                            <input type="text" id="regName" name="login"><br>
                             пароль:<br>
-                            <input type="password">
+                            <input type="password" id="regPassword" name="password">
                             повторите пароль:<br>
-                            <input type="password">
-                            <button type="submit" class="btn btn-default">войти</button>
+                            <input type="password" id="regRePassword" name="repassword">
+
+                            <button type="submit" class="btn btn-default">регистрировать</button>
                         </form>
                     </ul>
                 </li>
@@ -193,5 +194,31 @@
     window.onload = function (ev){
         loadContent("html/AllProduct.html",hideButton);
     };
+
+    var  registration = function () {
+
+        var login = $("#regName").val();
+        var password = $("#regPassword").val();
+        var rePassword = $("#regRePassword").val();
+
+        var request = {"login":login , "password": password};
+        var msg="request="+JSON.stringify(request);
+        console.log(msg);
+
+        $.ajax({
+            type: 'POST',
+            url: '/registration',
+            data: msg,
+            success: function(data) {
+
+                response=data;
+                //location.reload();
+            },
+            error:  function(xhr, str){
+                console.log('Возникла ошибка: ' + xhr.responseCode);
+            }
+        });
+    };
+
 
 </script>

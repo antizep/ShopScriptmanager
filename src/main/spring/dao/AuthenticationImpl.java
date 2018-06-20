@@ -14,13 +14,27 @@ import spring.repositories.AuthentificationRepository;
 
 public class AuthenticationImpl implements AuthenticationDao {
 
-    @Autowired
+    final
     AuthentificationRepository repository;
+
+    @Autowired
+    public AuthenticationImpl(AuthentificationRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public EntityAuthentication auntification(EntityAuthentication entityAuthentication) {
 
         return repository.findAuthenticationEntityByLoginAndPassword(entityAuthentication.getLogin(), entityAuthentication.getPassword());
 
+    }
+
+    @Override
+    public EntityAuthentication save(EntityAuthentication entityAuthentication) {
+        return repository.save(entityAuthentication);
+    }
+
+    public boolean searshByLogin(String login){
+        return repository.existsByLogin(login);
     }
 }

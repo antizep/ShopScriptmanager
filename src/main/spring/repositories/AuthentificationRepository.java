@@ -6,5 +6,5 @@ import spring.entity.EntityAuthentication;
 public interface AuthentificationRepository extends CrudRepository<EntityAuthentication, Long> {
 
     EntityAuthentication findAuthenticationEntityByLoginAndPassword(String login, String password);
-
+    boolean existsByLogin(String login);
 }

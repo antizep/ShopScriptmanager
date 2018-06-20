@@ -1,5 +1,7 @@
 package spring.entity;
 
+import org.json.JSONObject;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,6 +14,15 @@ public class EntityAuthentication implements Serializable{
     private String login;
     private String password;
     private EntityRoles role;
+
+    public EntityAuthentication(){}
+
+    public EntityAuthentication(JSONObject auth) {
+
+        this.login = auth.getString("login");
+        this.password = auth.getString("password");
+
+    }
 
     @Id
     @Column(name = "id")
