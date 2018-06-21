@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-md-4 icon-group">
                         <div class="navbar-right">
-                        <img src="images/iconKabinet.svg" alt="ARCHY" height="40">
+                       <a href="#" data-target="#myModal" data-toggle="modal"> <img src="images/iconKabinet.svg" alt="ARCHY"  height="40"></a>
                         <img src="images/iconIzbrannoe.svg" alt="ARCHY" height="40" >
 
                             <div class="basket">
@@ -70,50 +70,13 @@
                     </div>
                     <ul class="nav navbar-nav container">
 
+                        <!--<li class="dropdown" id="registration">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">регистрация <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
 
-                    <li class="dropdown" id="auth">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">авторизация <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Авторизация</a></li>
-                            <li class="divider"></li>
-                            <li>
-                                <form id="authentication" action="javascript:void(null);" onsubmit="authentication()" method="Post">
-                                    mail:<br>
-                                    <input type="text" name="login"><br>
-                                    пароль:<br>
-                                    <input type="password" name="password">
+                            </ul>
+                        </li>-->
 
-                                    <button type="submit" class="btn btn-default">войти</button>
-
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown" id="registration">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">регистрация <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Регистрация</a></li>
-                        <li class="divider"></li>
-                        <form action="javaScript:void(null)" onsubmit="registration()" id="regForm" method="get">
-                            email:<br>
-                            <input type="text" id="regName" name="login"><br>
-                            пароль:<br>
-                            <input type="password" id="regPassword" name="password">
-                            повторите пароль:<br>
-                            <input type="password" id="regRePassword" name="repassword">
-
-                            <button type="submit" class="btn btn-default">регистрировать</button>
-                        </form>
-                    </ul>
-                </li>
-                    <li class="dropdown" id="lk" style="display: none">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Личный кабинет <b class="caret"></b> </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#" onclick="adminLoad()" id="admin" style="display: none"> Админка </a></li>
-                            <li><a id="profile" href="#">Профиль</a></li>
-                            <li><a href="#" onclick="logout()"> Выход </a></li>
-                        </ul>
-                    </li>
                     <li>
                     </li>
                 </ul>
@@ -183,7 +146,74 @@
         </div>
     </div>
 
+    <!-- Модальное окно -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title auth" id="myModalLabel">Вход</h4>
+                    <h4 class="modal-title lk">Кабинет</h4>
+                    <h4 class="modal-title reg">Регистрация</h4>
 
+                </div>
+
+                <div class="auth">
+                    <form id="authentication" action="javascript:void(null);" onsubmit="authentication()" method="Post">
+                    <div class="modal-body">
+
+                            mail:<br>
+                            <input type="text" name="login"><br>
+                            пароль:<br>
+                            <input type="password" name="password">
+
+                    </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="regAuth()" class="btn btn-default">Регистрация</button>
+                            <button type="submit" class="btn btn-default">войти</button>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="reg">
+
+                    <form action="javaScript:void(null)" onsubmit="registration()" id="regForm" method="get">
+                        <div class="modal-body">
+
+                            email:<br>
+                            <input type="text" id="regName" name="login"><br>
+                            пароль:<br>
+                            <input type="password" id="regPassword" name="password"><br>
+                            повторите пароль:<br>
+                            <input type="password" id="regRePassword" name="repassword">
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" onclick="regAuth()" class="btn btn-default" >Вход</button>
+                            <button type="submit" class="btn btn-default">регистрировать</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="lk">
+                    <div class="media-body">
+                        <ul>
+                            <li><a href="#" onclick="adminLoad()" id="admin" style="display: none"> Админка </a></li>
+                            <li><a id="profile" href="#">Профиль</a></li>
+                            <li><a href="#" onclick="logout()"> Выход </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 
 
 </body>
@@ -219,6 +249,19 @@
             }
         });
     };
-
+    var f = true;
+    var regAuth = function () {
+        if(f){
+            console.log("reg");
+            $(".auth").css("display","none");
+            $(".reg").css("display","block");
+            f=false;
+        }else{
+            console.log("auth");
+            $(".reg").css("display","none");
+            $(".auth").css("display","block");
+            f=true;
+        }
+    }
 
 </script>

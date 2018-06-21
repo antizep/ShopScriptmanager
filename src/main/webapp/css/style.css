@@ -109,3 +109,9 @@ td,th {text-align:center;}
     display: block;
     margin: 0 auto;
 }
+.lk{
+    display: none;
+}
+.reg{
+    display: none;
+}

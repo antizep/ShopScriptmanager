@@ -9,9 +9,9 @@ var auth = function(){
     role =localStorage.getItem("role");
     console.log(id+":"+token+":"+role);
     if(id && token){
-        $("#auth").css("display","none");
+        $(".auth").css("display","none");
         $("#registration").css("display","none");
-        $("#lk").css("display","block");
+        $(".lk").css("display","block");
         $("#profile").attr("href","/profile/"+id);
         if(role == 1){
             $("#admin").css("display","block");
