@@ -69,6 +69,16 @@ td,th {text-align:center;}
     max-width: 100%;
     height: auto;
 }
+.navbar-collapse{
+    background: #99c9e9ff;
+
+}
+.logo{
+    position: fixed;
+    left: 3px;
+    z-index: 1;
+    top: 40px;
+}
 
 .basket{
 
