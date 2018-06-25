@@ -70,14 +70,24 @@ td,th {text-align:center;}
     height: auto;
 }
 .navbar-collapse{
+    height: 88px;
     background: #99c9e9ff;
 
 }
+
+@font-face {
+    font-family: Century Gothic-Bold;
+    src: url('/font/calibrib.ttf');
+}
+
+nav{
+    margin: 40px 40px 0px 40px ;
+    font-family: "Century Gothic-Bold", serif ;
+}
 .logo{
-    position: fixed;
-    left: 3px;
-    z-index: 1;
-    top: 40px;
+
+  margin-left: -88px;
+    margin-top: -23px;
 }
 
 .basket{
