@@ -1,0 +1,68 @@
+<div>
+    <h1>Управление каруселью</h1>
+
+    <form action="../AddProduct" method="POST" enctype="multipart/form-data">
+        <H2>Новый товар</H2>>
+
+        <div class="content">
+            <div class="row">
+                <span id="outputMulti"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <label>Картинки изображений:</label>
+            <input type="file" id="fileMulti" name="images" multiple />
+        </div>
+
+
+        <fieldset class="form-group">
+            <label for="note">Пометки</label>
+            <input type="text" class="form-control" name="name_product" id="note">
+            <small class="text-muted"></small>
+            <label for="date_s">Дата начала показа</label>
+            <input type="date" class="form-control" name="dateStart" id="date_s">
+            <label for="date_f">Дата удаления записи</label>
+            <input type="date" class="form-control" name="dateFinish" id="date_f">
+        </fieldset>
+
+        <button type="submit" class="btn btn-danger-outline">Сохранить</button>
+    </form>
+
+    <script>
+
+        addProviderFormProduct();
+
+        function handleFileSelectMulti(evt) {
+            var files = evt.target.files; // FileList object
+            document.getElementById('outputMulti').innerHTML = "";
+            for (var i = 0, f; f = files[i]; i++) {
+
+                if (!f.type.match('image.*')) {
+                    alert("Только изображения....");
+                }
+
+                var reader = new FileReader();
+                reader.onload = (function(theFile) {
+                    return function(e) {
+                        // Render thumbnail.
+                        var span = document.createElement('span');
+                        span.innerHTML = ['<img class="img-thumbnail col-md-3" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+                        document.getElementById('outputMulti').insertBefore(span, null);
+                    };
+                })(f);
+
+                // Read in the image file as a data URL.
+                reader.readAsDataURL(f);
+            }
+        }
+
+        document.getElementById('fileMulti').addEventListener('change', handleFileSelectMulti, false);
+
+        var productLoaden = function () {
+            createCardProduct(null);
+        }
+    </script>
+
+</div>
