@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface CaruselScheduleRepository extends CrudRepository<EntityCaruselSchedule, Long> {
 
-    List<EntityCaruselSchedule> findByDateFBeforeAndDateSAfter(Date dateF, Date dateS);
+    List<EntityCaruselSchedule> findByDateFAfterAndDateSBefore(Date dateF, Date dateS);
 
 }

@@ -45,8 +45,10 @@ public class AddCarusel extends HttpServlet {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
+
             Date datef = new Date(dateFormat.parse(dateFinish).getTime());
             Date dates = new Date(dateFormat.parse(dateStart).getTime());
+
             caruselSchedule.setDateF(datef);
             caruselSchedule.setDateS(dates);
 
@@ -56,8 +58,6 @@ public class AddCarusel extends HttpServlet {
 
             System.out.println(remark+"|"+dateStart+"|"+dateFinish);
 
-
-
             List<Part> fileParts = request.getParts().stream().filter(part -> "images".equals(part.getName())).collect(Collectors.toList()); // Retrieves <input type="file" name="file" multiple="true">
             int i=0;
 
@@ -65,8 +65,10 @@ public class AddCarusel extends HttpServlet {
 
                 i++;
                 String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+
                 FilesUtil.setImageName(i + ".");
-                String path = System.getProperty("upload.dir") + "/carusel/" + caruselSchedule.getId() + "/";
+
+                String path = System.getProperty("upload.dir") + "/img/carusel/" + caruselSchedule.getId() + "/";
                 System.out.println(path);
 
                 FilesUtil.saveLogo(filePart, path);

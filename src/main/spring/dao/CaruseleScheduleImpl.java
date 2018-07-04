@@ -33,6 +33,6 @@ public class CaruseleScheduleImpl implements CaruselScheduleDao {
 
     @Override
     public List<EntityCaruselSchedule> findBeforeDatef(Date datef, Date dates) {
-        return repository.findByDateFBeforeAndDateSAfter(datef, dates);
+        return repository.findByDateFAfterAndDateSBefore(datef, dates);
     }
 }
