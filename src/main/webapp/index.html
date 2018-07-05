@@ -97,26 +97,10 @@
             <div id="carousel" class="carousel slide " data-ride="carousel" style="display: inline-block;">
                 <!-- Индикаторы -->
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel" data-slide-to="1"></li>
-                    <li data-target="#carousel" data-slide-to="2"></li>
+
                 </ol>
                 <div class="carousel-inner">
-                    <div class="item active">
 
-                            <img src="/images/present2.png" width="100%" alt="...">
-
-                    </div>
-                    <div class="item">
-                            <img src="/images/present.png" width="100%" alt="...">
-
-                    </div>
-
-                    <div class="item">
-
-                            <img src="/images/present3.png" width="100%" alt="...">
-
-                    </div>
                 </div>
                 <!-- Элементы управления -->
                 <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
@@ -268,4 +252,57 @@
         }
     }
 
+    var loadCarousel = function(){
+        var container = $("#carousel");
+        if(container != null){
+
+            $.ajax({
+                type: 'POST',
+                url: '/select.carousel',
+                dataType: "json",
+                success: function(data) {
+
+                    var response= data.caruselImages;
+                    var flag = true;
+                    for(var i=0; i<response.length; i++){
+                        if(flag){
+
+                            container.find(".carousel-indicators").append(
+                                "<li data-target=\"#carousel\" class=\"active\" data-slide-to=\"" + i + "\"></li>"
+                            );
+
+                            container.find(".carousel-inner").append(
+                                "<div class=\"item active\">\n" +
+                                "\n" +
+                                "                            <img src=\"" + response[i] + "\" width=\"100%\" alt=\"...\">\n" +
+                                "\n" +
+                                "                    </div>"
+                            );
+                        }else {
+                            container.find(".carousel-indicators").append(
+                                "<li data-target=\"#carousel\" data-slide-to=\"" + i + "\"></li>"
+                            );
+
+                            container.find(".carousel-inner").append(
+                                "<div class=\"item\">\n" +
+                                "\n" +
+                                "                            <img src=\"" + response[i] + "\" width=\"100%\" alt=\"...\">\n" +
+                                "\n" +
+                                "                    </div>"
+                            );
+                        }
+                        console.log(response[i]);
+                        flag = false;
+                    }
+
+
+                },
+                error:  function(xhr, str){
+                    console.log('Возникла ошибка: ' + xhr.responseCode);
+                }
+            });
+
+        }
+    };
+    loadCarousel();
 </script>
