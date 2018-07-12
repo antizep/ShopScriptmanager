@@ -12,16 +12,17 @@ import java.sql.CallableStatement;
 import java.sql.Date;
 import java.util.List;
 
-@Service("jpaCaruselSchedule")
+@Service("jpaCarouselSchedule")
 @Repository
 @Transactional
-public class CaruseleScheduleImpl implements CaruselScheduleDao {
+
+public class CarouselScheduleImpl implements CaruselScheduleDao {
 
     private final
     CaruselScheduleRepository repository;
 
     @Autowired
-    public CaruseleScheduleImpl(CaruselScheduleRepository repository) {
+    public CarouselScheduleImpl(CaruselScheduleRepository repository) {
         this.repository = repository;
     }
 

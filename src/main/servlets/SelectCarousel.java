@@ -28,7 +28,7 @@ public class SelectCarousel extends HttpServlet {
 
         WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
-        CaruselScheduleDao caruselScheduleDao = ctx.getBean("jpaCaruselSchedule",CaruselScheduleDao.class);
+        CaruselScheduleDao caruselScheduleDao = ctx.getBean("jpaCarouselSchedule",CaruselScheduleDao.class);
         Date today = new Date(new java.util.Date().getTime());
 
         List<EntityCaruselSchedule> caruselScheduleList = caruselScheduleDao.findBeforeDatef(today,today);
@@ -50,7 +50,7 @@ public class SelectCarousel extends HttpServlet {
 
         }
         JSONObject responseJ = new JSONObject();
-        responseJ.put("caruselImages", imagesJ);
+        responseJ.put("carouselImages", imagesJ);
         responseJ.put("authentication",true);
         response.getWriter().print(responseJ);
 //        System.out.println(caruselScheduleList);

@@ -46,6 +46,7 @@ var  authentication = function () {
             alert('Возникла ошибка: ' + xhr.responseCode);
         }
     });
+    $("#myModal").css("display","none");
 };
 
 var logout = function (){
@@ -72,4 +73,5 @@ var logout = function (){
             alert('Возникла ошибка: ' + xhr.responseCode);
         }
     })
+    $("#myModal").css("display","none");
 };

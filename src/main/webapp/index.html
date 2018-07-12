@@ -143,7 +143,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title auth" id="myModalLabel">Вход</h4>
-                    <h4 class="modal-title lk">Кабинет</h4>
+                    <h4 class="modal-title lk" >Кабинет</h4>
                     <h4 class="modal-title reg">Регистрация</h4>
 
                 </div>
@@ -160,7 +160,7 @@
                     </div>
                         <div class="modal-footer">
                             <button type="button" onclick="regAuth()" class="btn btn-default">Регистрация</button>
-                            <button type="submit" class="btn btn-default">войти</button>
+                            <button type="submit" class="btn btn-default" >войти</button>
                         </div>
 
                     </form>
@@ -191,9 +191,9 @@
                 <div class="lk">
                     <div class="media-body">
                         <ul>
-                            <li><a href="#" onclick="adminLoad()" id="admin" style="display: none"> Админка </a></li>
-                            <li><a id="profile" href="#">Профиль</a></li>
-                            <li><a href="#" onclick="logout()"> Выход </a></li>
+                            <li><a href="#" onclick="adminLoad()" id="admin" data-dismiss="modal" style="display: none"> Админка </a></li>
+                            <li><a id="profile" href="#" data-dismiss="modal">Профиль</a></li>
+                            <li><a href="#" onclick="logout()" data-dismiss="modal"> Выход </a></li>
                         </ul>
                     </div>
                 </div>
@@ -236,6 +236,7 @@
                 console.log('Возникла ошибка: ' + xhr.responseCode);
             }
         });
+        $("#myModal").css("display","none");
     };
     var f = true;
     var regAuth = function () {
@@ -262,8 +263,11 @@
                 dataType: "json",
                 success: function(data) {
 
-                    var response= data.caruselImages;
+                    var response= data.carouselImages;
                     var flag = true;
+                    if (response.length===0){
+                        container.css("display","none");
+                    }
                     for(var i=0; i<response.length; i++){
                         if(flag){
 

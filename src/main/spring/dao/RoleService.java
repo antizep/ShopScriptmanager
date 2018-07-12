@@ -13,11 +13,21 @@ import spring.repositories.RoleRepository;
 @Repository
 @Transactional
 public class RoleService implements RoleDao {
-    @Autowired
+    final
     RoleRepository repository;
+
+    @Autowired
+    public RoleService(RoleRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public EntityRoles findById(int id) {
         return repository.findByIdRole(id);
+    }
+
+    @Override
+    public EntityRoles findByName(String name) {
+        return repository.findByName(name);
     }
 }

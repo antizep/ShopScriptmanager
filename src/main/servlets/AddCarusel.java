@@ -39,7 +39,7 @@ public class AddCarusel extends HttpServlet {
 
         WebApplicationContext ctx= WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
-        CaruselScheduleDao caruselScheduleDao = ctx.getBean("jpaCaruselSchedule",CaruselScheduleDao.class);
+        CaruselScheduleDao caruselScheduleDao = ctx.getBean("jpaCarouselSchedule",CaruselScheduleDao.class);
 
         EntityCaruselSchedule caruselSchedule = new EntityCaruselSchedule();
 

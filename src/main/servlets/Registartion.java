@@ -5,7 +5,9 @@ import org.json.JSONObject;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import spring.entity.EntityAuthentication;
+import spring.entity.EntityRoles;
 import spring.interfaces.AuthenticationDao;
+import spring.interfaces.RoleDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,8 +23,14 @@ public class Registartion extends HttpServlet {
         JSONObject requestJ = new JSONObject(request.getParameter("request"));
         JSONObject responseJ = new JSONObject();
         try{
-            EntityAuthentication entityAuthentication = new EntityAuthentication(requestJ);
             WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
+            EntityAuthentication entityAuthentication = new EntityAuthentication(requestJ);
+
+
+            RoleDao roleDao = ctx.getBean("jpaAuntificationRoleService",RoleDao.class);
+            EntityRoles entityRoles = roleDao.findByName("buyer");
+            entityAuthentication.setRole(entityRoles);
+
             AuthenticationDao authenticationDao = ctx.getBean("jpaAuthenticationService", AuthenticationDao.class);
 
             if(!authenticationDao.searshByLogin(entityAuthentication.getLogin())){
