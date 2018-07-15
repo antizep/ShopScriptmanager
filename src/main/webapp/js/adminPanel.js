@@ -4,6 +4,7 @@ var adminLoad = function(){
     $.get('./html/AdminPanel.html', function (data) {
         $('#content_table').html(data);
     });
+    $("#myModal").modal('toggle');
 };
 
 var loadContent = function(loadForm,callback){

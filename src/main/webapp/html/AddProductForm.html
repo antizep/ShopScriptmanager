@@ -29,31 +29,63 @@
         </select>
     </fieldset>
 
-        <label class="exampleTextarea">Цены:</label>
-    <div class="form-group form-inline">
-        <div class="input-group">
-            <div class="input-group-addon">&#8381;</div>
-            <input type="text" class="form-control" id="purchase" name="purchase" placeholder="закупочная цена">
-            <div class="input-group-addon">.00</div>
-        </div>
-        <div class="input-group">
-            <div class="input-group-addon">&#8381;</div>
-            <input type="text" class="form-control" id="selling" name="selling" placeholder="отпускная цена">
-            <div class="input-group-addon">.00</div>
-        </div>
-    </div>
-
     <fieldset class="form-group">
         <label for="exampleTextarea">Описание</label>
         <textarea class="form-control" id="exampleTextarea" name="description" rows="3"></textarea>
     </fieldset>
 
+        <label class="exampleTextarea">Цены:</label>
+    <div  id="arts">
+    <div class="form-group form-inline">
+
+            <input type="text" class="form-control" name="art[]" placeholder="параметр">
+
+
+        <div class="input-group">
+            <div class="input-group-addon">&#8381;</div>
+            <input type="text" class="form-control" id="purchase" name="purchase[]" placeholder="закупочная цена">
+            <div class="input-group-addon">.00</div>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-addon">&#8381;</div>
+            <input type="text" class="form-control" id="selling" name="selling[]" placeholder="отпускная цена">
+            <div class="input-group-addon">.00</div>
+        </div>
+    </div>
+    </div>
+
+    <div onclick="addArticul()" class="btn btn-danger-outline">Добавить артикул</div>
     <button type="submit" class="btn btn-danger-outline">Submit</button>
+
 </form>
 
 <script>
 
     addProviderFormProduct();
+    var articulsNum=1;
+
+    var delArticul = function(elenent){
+        console.log(elenent);
+        elenent.parentElement.remove();
+    };
+    var addArticul = function(){
+        $("#arts").append("<div class=\"form-group form-inline\">" +
+            "    <input type=\"text\" class=\"form-control\" name=\"art[]\" placeholder=\"параметр\">\n" +
+            "        <div class=\"input-group\">\n" +
+            "            <div class=\"input-group-addon\">&#8381;</div>\n" +
+            "            <input type=\"text\" class=\"form-control\" id=\"purchase\" name=\"purchase[]\" placeholder=\"закупочная цена\">\n" +
+            "            <div class=\"input-group-addon\">.00</div>\n" +
+            "        </div>\n" +
+            "        <div class=\"input-group\">\n" +
+            "            <div class=\"input-group-addon\">&#8381;</div>\n" +
+            "            <input type=\"text\" class=\"form-control\" id=\"selling\" name=\"selling[]\" placeholder=\"отпускная цена\">\n" +
+            "            <div class=\"input-group-addon\">.00</div>\n" +
+            "        </div>\n" +
+            "<span onclick='delArticul(this)'>del</span>    " +
+            "</div>")
+        articulsNum++;
+    };
 
     function handleFileSelectMulti(evt) {
         var files = evt.target.files; // FileList object

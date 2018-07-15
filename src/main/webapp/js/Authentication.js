@@ -73,5 +73,5 @@ var logout = function (){
             alert('Возникла ошибка: ' + xhr.responseCode);
         }
     })
-    $("#myModal").css("display","none");
+    $("#myModal").modal('toggle');
 };

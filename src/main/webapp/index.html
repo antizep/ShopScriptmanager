@@ -236,7 +236,7 @@
                 console.log('Возникла ошибка: ' + xhr.responseCode);
             }
         });
-        $("#myModal").css("display","none");
+        $("#myModal").modal('toggle');
     };
     var f = true;
     var regAuth = function () {

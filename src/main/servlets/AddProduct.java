@@ -4,6 +4,7 @@ import org.json.JSONObject;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import services.FilesUtil;
+import spring.entity.EntityArt;
 import spring.entity.EntityPrice;
 import spring.entity.EntityProduct;
 import spring.entity.EntityProvider;
@@ -40,20 +41,29 @@ public class AddProduct extends HttpServlet {
         WebApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 
         String nameProduct = request.getParameter("name_product");
-        String purchase = request.getParameter("purchase");
-        String selling = request.getParameter("selling");
+
+        String[] purchases = request.getParameterValues("purchase[]");
+        String[] sellings = request.getParameterValues("selling[]");
+        String[] arts = request.getParameterValues("art[]");
+
+
         String description = request.getParameter("description");
         String[] providers = request.getParameterValues("provider[]");
 
         EntityProduct product = new EntityProduct();
         product.setName(nameProduct);
         product.setDescription(description);
-        try {
-            product.setPurchase(Integer.parseInt(purchase));
-            product.setSelling(Integer.parseInt(selling));
-        }catch (NumberFormatException e){
-            System.out.println(".!.");
+        List<EntityArt> artList = new ArrayList<>();
+        for(int i=0; i< arts.length ; i++){
+            EntityArt entityArt = new EntityArt();
+            entityArt.setName(arts[i]);
+            entityArt.setPrice(Float.parseFloat(sellings[i]));
+            entityArt.setOldPrice(0);
+            entityArt.setPurchase(Float.parseFloat(purchases[i]));
+            artList.add(entityArt);
         }
+        product.setArts(artList);
+
         ProductDao productDao = ctx.getBean("jpaProduct",ProductDao.class);
 
         productDao.save(product);

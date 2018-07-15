@@ -42,7 +42,7 @@ public class SelectCarousel extends HttpServlet {
             for (File image:images){
 
                 String filePath = image.getCanonicalPath();
-                String fileUrl = filePath.split("/uploads")[1];
+                String fileUrl = filePath.split("uploads")[1];
                 imagesJ.put(fileUrl);
                 //System.out.println(fileUrl);
 

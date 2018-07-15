@@ -2,16 +2,15 @@ package spring.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
 public class EntityProduct implements Serializable {
     private long id;
     private String name;
-    private Integer purchase;
-    private Integer selling;
     private String description;
-
+    private List<EntityArt> arts;
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,25 +32,8 @@ public class EntityProduct implements Serializable {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "purchase")
-    public Integer getPurchase() {
-        return purchase;
-    }
 
-    public void setPurchase(Integer purchase) {
-        this.purchase = purchase;
-    }
 
-    @Basic
-    @Column(name = "selling")
-    public Integer getSelling() {
-        return selling;
-    }
-
-    public void setSelling(Integer selling) {
-        this.selling = selling;
-    }
 
     @Basic
     @Column(name = "description")
@@ -72,8 +54,7 @@ public class EntityProduct implements Serializable {
 
         return id == that.id
                 && (name != null ? name.equals(that.name) : that.name == null)
-                && (purchase != null ? purchase.equals(that.purchase) : that.purchase == null)
-                && (selling != null ? selling.equals(that.selling) : that.selling == null)
+
                 && (description != null ? description.equals(that.description) : that.description == null);
     }
 
@@ -81,9 +62,16 @@ public class EntityProduct implements Serializable {
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (purchase != null ? purchase.hashCode() : 0);
-        result = 31 * result + (selling != null ? selling.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "product" , cascade = CascadeType.ALL)
+    public List<EntityArt> getArts() {
+        return arts;
+    }
+
+    public void setArts(List<EntityArt> arts) {
+        this.arts = arts;
     }
 }
