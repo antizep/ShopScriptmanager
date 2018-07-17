@@ -8,6 +8,7 @@ import spring.entity.EntityArt;
 import spring.entity.EntityPrice;
 import spring.entity.EntityProduct;
 import spring.entity.EntityProvider;
+import spring.interfaces.ArtDao;
 import spring.interfaces.PriceDao;
 import spring.interfaces.ProductDao;
 
@@ -53,20 +54,35 @@ public class AddProduct extends HttpServlet {
         EntityProduct product = new EntityProduct();
         product.setName(nameProduct);
         product.setDescription(description);
+
         List<EntityArt> artList = new ArrayList<>();
+
+
+
+
+
+        //product.setArts(artList);
+
+        ProductDao productDao = ctx.getBean("jpaProduct",ProductDao.class);
+
+        productDao.save(product);
+
+        ArtDao artDao = ctx.getBean("jpaArt",ArtDao.class);
+
+
+
         for(int i=0; i< arts.length ; i++){
+
             EntityArt entityArt = new EntityArt();
             entityArt.setName(arts[i]);
             entityArt.setPrice(Float.parseFloat(sellings[i]));
             entityArt.setOldPrice(0);
             entityArt.setPurchase(Float.parseFloat(purchases[i]));
+            entityArt.setProduct(product);
             artList.add(entityArt);
+
         }
-        product.setArts(artList);
-
-        ProductDao productDao = ctx.getBean("jpaProduct",ProductDao.class);
-
-        productDao.save(product);
+        artDao.saveAll(artList);
         PriceDao priceDao = ctx.getBean("jpaPrice",PriceDao.class);
 
         List<EntityPrice> productsList = new ArrayList<>();
