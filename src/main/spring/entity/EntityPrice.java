@@ -2,12 +2,14 @@ package spring.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "price")
 public class EntityPrice implements Serializable{
     private EntityProvider providerByProvider;
     private EntityProduct productByProduct;
+    private List<EntityCategories> categories;
     private long id;
     @ManyToOne
     @JoinColumn(name = "provider", referencedColumnName = "id", nullable = false)
@@ -37,5 +39,15 @@ public class EntityPrice implements Serializable{
 
     public void setId(long id) {
         this.id = id;
+    }
+
+
+    @ManyToMany(mappedBy = "prices")
+    public List<EntityCategories> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<EntityCategories> categories) {
+        this.categories = categories;
     }
 }
